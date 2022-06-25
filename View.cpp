@@ -53,10 +53,17 @@ void View::show_map() const{
         cout << header << " ";
         edge_y -= (int) scale;
         for(int j=0; j < size; j++){
-            cout << dot;
-//          TODO - add if there is object in this area
-//          y = edge_y - i * scale
-//          x = origin.x + j * scale
+//
+//          TODO - implement () operator for Model (double x, double y)
+            double x = origin.first + j * scale;
+            double y = edge_y - i * scale;
+            auto obj = model(x, y);
+            if(obj){
+                cout << obj;
+            }
+            else{
+                cout << dot;
+            }
         }
         cout << endl;
     }
